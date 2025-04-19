@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644ccdf914fdb484680966ba3af0cd1a, type: 3}
+  m_Name: Mana Flask Item
+  m_EditorClassIdentifier: 
+  itemName: Mana Flask
+  itemIcon: {fileID: 21300000, guid: 0145d9a4b5f086b45b0ca29fe7317cd4, type: 3}
+  itemDescription: 
+  itemID: 12
+  itemModel: {fileID: 5803077821870759534, guid: 56d454ff09adfdd43bf7eebde5fd6487, type: 3}
+  useItemAnimation: Item_Flask_Drink_01
+  isConsumable: 1
+  healthFlask: 0
+  flaskRestoration: 50
+  emptyFlaskItem: {fileID: 6604139278069424992, guid: ada3493d7dd09254fa2b37a85e9a85b0, type: 3}
+  emptyFlaskAnimation: Item_Flask_Empty_01

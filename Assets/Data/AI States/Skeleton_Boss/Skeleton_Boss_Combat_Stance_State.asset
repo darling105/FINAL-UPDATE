@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f2887c14083814a9770a56bc2c3c07, type: 3}
+  m_Name: Skeleton_Boss_Combat_Stance_State
+  m_EditorClassIdentifier: 
+  aiCharacterAttacks:
+  - {fileID: 11400000, guid: c59673f9cbacb5e4e8e03a0f905b368e, type: 2}
+  - {fileID: 11400000, guid: 006e88baa3faa9d4c84e5d95e3bacfdc, type: 2}
+  - {fileID: 11400000, guid: c1000cd088b111546a882273ee10477b, type: 2}
+  potentialAttacks: []
+  choosenAttack: {fileID: 0}
+  previousAttack: {fileID: 0}
+  canPerformCombo: 0
+  chanceToPerformCombo: 25
+  enablePivot: 1
+  maximumEngagementDistance: 5

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2487798677554995772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6637941731828902995}
+  - component: {fileID: 7245481045191527408}
+  m_Layer: 0
+  m_Name: World Character Effects Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6637941731828902995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487798677554995772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7245481045191527408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487798677554995772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dffac42c24634546a8a9cc1b6ca3c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageEffect: {fileID: 11400000, guid: 774c09b6028d9fc48af3cec4d7c947a0, type: 2}
+  takeBlockedDamageEffect: {fileID: 11400000, guid: 5b54f70e76b0aca46bb46e6e1bd1917b, type: 2}
+  takeCriticalDamageEffect: {fileID: 11400000, guid: 04b4a4882feed1840b2cab77ba239f5d, type: 2}
+  twoHandingEffect: {fileID: 11400000, guid: 1c50f0a905fccd34fbdab30ba00e7950, type: 2}
+  instantEffects:
+  - {fileID: 11400000, guid: e7d628fbc52f1424faecd28b5e354309, type: 2}
+  - {fileID: 11400000, guid: 774c09b6028d9fc48af3cec4d7c947a0, type: 2}
+  - {fileID: 11400000, guid: 5b54f70e76b0aca46bb46e6e1bd1917b, type: 2}
+  staticEffects:
+  - {fileID: 11400000, guid: 1c50f0a905fccd34fbdab30ba00e7950, type: 2}
+  bloodSplatterVFX: {fileID: 428063649273912501, guid: 6b55c1813e9f6204fac3acd175cc5db6, type: 3}

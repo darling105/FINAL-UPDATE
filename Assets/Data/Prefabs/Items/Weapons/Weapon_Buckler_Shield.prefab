@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1031943567854608728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8083597169580159278}
+  m_Layer: 0
+  m_Name: Weapon Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8083597169580159278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031943567854608728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 318943585425582429}
+  m_Father: {fileID: 3743465852666450127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3303380444495318358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3743465852666450127}
+  - component: {fileID: 7674291253541591047}
+  m_Layer: 0
+  m_Name: Weapon_Buckler_Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3743465852666450127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303380444495318358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8083597169580159278}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7674291253541591047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303380444495318358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c058785d2bcfda746b228619533ef7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeDamageCollider: {fileID: 1184924312943225466}
+--- !u!1 &7092236181272456317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2349816222384394751}
+  - component: {fileID: 125647132864020008}
+  - component: {fileID: 1184924312943225466}
+  m_Layer: 0
+  m_Name: Damage Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2349816222384394751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092236181272456317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 318943585425582429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &125647132864020008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092236181272456317}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5881968, y: 0.5865195, z: 0.16376057}
+  m_Center: {x: -0.015941963, y: -0.008874834, z: -0.013508246}
+--- !u!114 &1184924312943225466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092236181272456317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9705a6d3056e41f43ae1ffbd341c0693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: {fileID: 125647132864020008}
+  physicalDamage: 0
+  magicDamage: 0
+  fireDamage: 0
+  lightningDamage: 0
+  holyDamage: 0
+  poiseDamage: 0
+  characterCausingDamage: {fileID: 0}
+  light_Attack_01_Modifier: 0
+  light_Attack_02_Modifier: 0
+  heavy_Attack_01_Modifier: 0
+  heavy_Attack_02_Modifier: 0
+  charge_Attack_01_Modifier: 0
+  charge_Attack_02_Modifier: 0
+  running_Attack_01_Modifier: 0
+  rolling_Attack_01_Modifier: 0
+  backstep_Attack_01_Modifier: 0
+--- !u!1001 &316257588601404035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8083597169580159278}
+    m_Modifications:
+    - target: {fileID: 1327894643296934, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_Name
+      value: Buckler Weapon Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000010420466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000037951435
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000035470208
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5007997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.34963095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.26146257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7473923
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 47.818
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 22.849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 122.59
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2349816222384394751}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+--- !u!4 &318943585425582429 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4097989940728798, guid: 62c67cb9066a35842a6ae9a804bdf64d, type: 3}
+  m_PrefabInstance: {fileID: 316257588601404035}
+  m_PrefabAsset: {fileID: 0}

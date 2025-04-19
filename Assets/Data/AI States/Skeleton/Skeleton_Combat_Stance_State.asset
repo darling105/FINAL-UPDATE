@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f2887c14083814a9770a56bc2c3c07, type: 3}
+  m_Name: Skeleton_Combat_Stance_State
+  m_EditorClassIdentifier: 
+  aiCharacterAttacks:
+  - {fileID: 11400000, guid: 12ef764fad03b9942b413ae1d79dca0e, type: 2}
+  - {fileID: 11400000, guid: 509308601c13200458478e8b6b61b1a7, type: 2}
+  potentialAttacks:
+  - {fileID: 11400000, guid: 12ef764fad03b9942b413ae1d79dca0e, type: 2}
+  - {fileID: 11400000, guid: 509308601c13200458478e8b6b61b1a7, type: 2}
+  choosenAttack: {fileID: 11400000, guid: 509308601c13200458478e8b6b61b1a7, type: 2}
+  previousAttack: {fileID: 11400000, guid: 509308601c13200458478e8b6b61b1a7, type: 2}
+  canPerformCombo: 0
+  chanceToPerformCombo: 25
+  maximumEngagementDistance: 5

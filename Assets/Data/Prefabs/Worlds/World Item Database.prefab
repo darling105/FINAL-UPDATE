@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2457312382210378748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7809803545795020993}
+  - component: {fileID: 1395907907216127268}
+  m_Layer: 0
+  m_Name: World Item Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7809803545795020993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457312382210378748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.72640705, y: 0.6199217, z: -0.3588446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1395907907216127268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457312382210378748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2895512a43dc8140b0ac026370196cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unarmedWeapon: {fileID: 11400000, guid: a48aaaf0c8439af48aae91666584c841, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: a48aaaf0c8439af48aae91666584c841, type: 2}
+  - {fileID: 11400000, guid: cb52dc6c0233db14a940583cd7999bc9, type: 2}
+  - {fileID: 11400000, guid: c07a0cd2b285b7649bf2d82b0a1db195, type: 2}
+  headEquipment:
+  - {fileID: 11400000, guid: ca3cf2c158605ff47bf502350175b938, type: 2}
+  - {fileID: 11400000, guid: aff3421bbf1a1db4cbe72da324bfecdd, type: 2}
+  bodyEquipment:
+  - {fileID: 11400000, guid: a6e723c8357cafa4982da2dff30332c1, type: 2}
+  legEquipment:
+  - {fileID: 11400000, guid: 91bedd8442b94024a966807297e0c1a0, type: 2}
+  handEquipment:
+  - {fileID: 11400000, guid: 1143060dd363afe4896e6fc66729be40, type: 2}
