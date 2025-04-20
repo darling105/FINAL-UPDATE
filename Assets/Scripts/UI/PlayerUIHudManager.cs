@@ -14,6 +14,13 @@ public class PlayerUIHudManager : MonoBehaviour
     [SerializeField] UI_StatBar staminaBar;
     [SerializeField] UI_StatBar focusPointsBar;
 
+    [Header("SHADE")]
+    [SerializeField] float shadeUpdateCountDelayTimer = 2.5f;
+    private int pendingShadesToAdd = 0;
+    private Coroutine waitThenAddShadesCoroutine;
+    [SerializeField] TextMeshProUGUI shadesToAddText;
+    [SerializeField] TextMeshProUGUI shadesCountText;
+
     [Header("QUICK SLOTS")]
     [SerializeField] Image rightWeaponQuickSlotIcon;
     [SerializeField] Image leftWeaponQuickSlotIcon;
@@ -50,6 +57,43 @@ public class PlayerUIHudManager : MonoBehaviour
         staminaBar.gameObject.SetActive(true);
         focusPointsBar.gameObject.SetActive(false);
         focusPointsBar.gameObject.SetActive(true);
+    }
+
+    public void SetShadesCount(int shadesToAdd)
+    {
+        pendingShadesToAdd += shadesToAdd;
+
+        if (waitThenAddShadesCoroutine != null)
+            StopCoroutine(waitThenAddShadesCoroutine);
+
+        waitThenAddShadesCoroutine = StartCoroutine(WaitThenUpdateShadesCount());
+
+        //shadesCountText.text = PlayerUIManager.instance.localPlayer.playerStatsManager.shades.ToString();
+    }
+
+    private IEnumerator WaitThenUpdateShadesCount()
+    {
+        float timer = shadeUpdateCountDelayTimer;
+        int shadesToAdd = pendingShadesToAdd;
+        shadesToAddText.text = "+ " + shadesToAdd.ToString();
+        shadesCountText.enabled = true;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+            if(shadesToAdd != pendingShadesToAdd)
+            {
+                shadesToAdd = pendingShadesToAdd;
+                shadesToAddText.text = "+ " +shadesToAdd.ToString();
+            }
+            yield return null;
+        }
+
+        shadesToAddText.enabled = false;
+        pendingShadesToAdd = 0;
+        shadesCountText.text = PlayerUIManager.instance.localPlayer.playerStatsManager.shades.ToString();
+
+        yield return null;
     }
 
     public void SetNewStaminaValue(float oldValue, float newValue)
@@ -150,8 +194,7 @@ public class PlayerUIHudManager : MonoBehaviour
 
         if (quickSlotItem.isConsumable)
         {
-            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
-            quickSlotItemCount.text = quickSlotItem.GetCurrentAmount(player).ToString();
+            quickSlotItemCount.text = quickSlotItem.GetCurrentAmount(PlayerUIManager.instance.localPlayer).ToString();
             quickSlotItemCount.enabled = true;
         }
         else

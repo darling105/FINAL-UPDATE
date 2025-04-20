@@ -80,6 +80,7 @@ public class PlayerManager : CharacterManager
         {
             PlayerCamera.instance.player = this;
             PlayerInputManager.instance.player = this;
+            PlayerUIManager.instance.localPlayer = this;
             WorldSaveGameManager.instance.player = this;
 
             playerNetworkManager.vitality.OnValueChanged += playerNetworkManager.SetNewMaxHealthValue;

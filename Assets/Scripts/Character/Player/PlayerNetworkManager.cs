@@ -9,6 +9,9 @@ public class PlayerNetworkManager : CharacterNetworkManager
     PlayerManager player;
     public NetworkVariable<FixedString64Bytes> characterName = new NetworkVariable<FixedString64Bytes>("Darling", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+
+
+
     [Header("Flasks")]
     public NetworkVariable<int> remainingHealthFlasks = new NetworkVariable<int>(3, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public NetworkVariable<int> remainingFocusPointFlasks = new NetworkVariable<int>(3, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);

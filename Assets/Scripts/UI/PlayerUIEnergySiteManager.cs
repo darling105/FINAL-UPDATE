@@ -2,28 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUIEnergySiteManager : MonoBehaviour
+public class PlayerUIEnergySiteManager : PlayerUIMenu
 {
-    [Header("Menu")]
-    [SerializeField] GameObject menu;
-
-
-    public void OpenEnergySiteManagerMenu()
-    {
-        PlayerUIManager.instance.menuWindowIsOpen = true;
-        menu.SetActive(true);
-    }
-
-    public void CloseEnergySiteManagerMenu()
-    {
-        PlayerUIManager.instance.menuWindowIsOpen = false;
-        menu.SetActive(false);
-    }
 
     public void OpenTeleportLocationMenu()
     {
-        CloseEnergySiteManagerMenu();
-        PlayerUIManager.instance.playerUITeleportLocationManager.OpenTeleportLocationManagerMenu();
+        CloseMenu();
+        PlayerUIManager.instance.playerUITeleportLocationManager.OpenMenu();
+    }
+
+    public void OpenLevelUpMenu()
+    {
+        CloseMenu();
+        PlayerUIManager.instance.playerUILevelUpManager.OpenMenu();
     }
 
 }

@@ -8,6 +8,7 @@ public class PlayerUIManager : MonoBehaviour
     [Header("Network join")]
     [SerializeField] bool startGameAsClient;
     public static PlayerUIManager instance;
+    [HideInInspector] public PlayerManager localPlayer;
 
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
@@ -16,6 +17,7 @@ public class PlayerUIManager : MonoBehaviour
     [HideInInspector] public PlayerUIEnergySiteManager playerUIEnergySiteManager;
     [HideInInspector] public PlayerUITeleportLocationManager playerUITeleportLocationManager;
     [HideInInspector] public PlayerUILoadingScreenManager playerUILoadingScreenManager;
+    [HideInInspector] public PlayerUILevelUpManager playerUILevelUpManager;
 
     [Header("UI Flag")]
     public bool menuWindowIsOpen = false;
@@ -39,6 +41,7 @@ public class PlayerUIManager : MonoBehaviour
         playerUIEnergySiteManager = GetComponentInChildren<PlayerUIEnergySiteManager>();
         playerUITeleportLocationManager = GetComponentInChildren<PlayerUITeleportLocationManager>();
         playerUILoadingScreenManager = GetComponentInChildren<PlayerUILoadingScreenManager>();
+        playerUILevelUpManager = GetComponentInChildren<PlayerUILevelUpManager>();
     }
     
     private void Start()
@@ -59,10 +62,11 @@ public class PlayerUIManager : MonoBehaviour
 
     public void CloseAllMenuWindows()
     {
-        playerUICharacterMenuManager.CloseCharacterMenu();
-        playerUIEquipmentManager.CloseEquipmentManagerMenu();
-        playerUIEnergySiteManager.CloseEnergySiteManagerMenu();
-        playerUITeleportLocationManager.CloseTeleportLocationManagerMenu();
+        playerUICharacterMenuManager.CloseMenuAfterFixedUpdate();
+        playerUIEquipmentManager.CloseMenuAfterFixedUpdate();
+        playerUIEnergySiteManager.CloseMenuAfterFixedUpdate();
+        playerUITeleportLocationManager.CloseMenuAfterFixedUpdate();
+        playerUILevelUpManager.CloseMenuAfterFixedUpdate();
     }
 
 }

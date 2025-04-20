@@ -38,7 +38,7 @@ public class AICharacterSpawner : MonoBehaviour
 
     public void ResetCharacter()
     {
-        if (characterGameObject == null)
+        if (instantiatedGameObject == null)
             return;
 
         if (aiCharacter == null)

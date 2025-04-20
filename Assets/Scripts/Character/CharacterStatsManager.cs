@@ -7,6 +7,8 @@ public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
 
+    [Header("Shades")]
+    public int shadesDropOnDeath = 50;
 
     [Header("Stamina Regeneration")]
     [SerializeField] float staminaRegenerationAmount = 2;
@@ -34,7 +36,7 @@ public class CharacterStatsManager : MonoBehaviour
     public float armorRobustness; //frost and bleed
     public float armorFocus; // madness and sleep
     public float armorVitality; //death curse
-    
+
 
     [Header("Poise")]
     public float totalPoiseDamage;
@@ -85,6 +87,47 @@ public class CharacterStatsManager : MonoBehaviour
         return Mathf.RoundToInt(focusPoints);
     }
 
+    public int CalculateCharacterLevelBasedOnStats(bool calculateProjectedLevel = false)
+    {
+
+        if (calculateProjectedLevel)
+        {
+            int totalProjectedAttributes =
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.vitalityLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.mindLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.enduranceLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.strengthLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.dexterityLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.intelligenceLevelSlider.value) +
+            Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.faithLevelSlider.value);
+
+            int projecctedCharacterLevel = totalProjectedAttributes - 70 + 1;
+
+            if (projecctedCharacterLevel < 1)
+            {
+                projecctedCharacterLevel = 1;
+            }
+
+            return projecctedCharacterLevel;
+        }
+
+        int totalAttributes = character.characterNetworkManager.vitality.Value +
+            character.characterNetworkManager.endurance.Value +
+            character.characterNetworkManager.mind.Value +
+            character.characterNetworkManager.strength.Value +
+            character.characterNetworkManager.dexterity.Value +
+            character.characterNetworkManager.intelligence.Value +
+            character.characterNetworkManager.faith.Value;
+
+        int characterLevel = totalAttributes - 70 + 1;
+
+        if (characterLevel < 1)
+        {
+            characterLevel = 1;
+        }
+
+        return characterLevel;
+    }
     public virtual void RegenerateStamina()
     {
         if (!character.IsOwner)

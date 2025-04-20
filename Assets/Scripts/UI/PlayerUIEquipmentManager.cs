@@ -5,10 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.Netcode;
 
-public class PlayerUIEquipmentManager : MonoBehaviour
+public class PlayerUIEquipmentManager : PlayerUIMenu
 {
-    [Header("Menu")]
-    [SerializeField] GameObject menu;
 
     [Header("Weapon Slots")]
     [SerializeField] Image rightHandSlot01;
@@ -72,21 +70,16 @@ public class PlayerUIEquipmentManager : MonoBehaviour
         quickSlot03Button = quickSlot03EquipmentSlot.GetComponentInParent<Button>(true);
     }
 
-    public void OpenEquipmentManagerMenu()
+
+    public override void OpenMenu()
     {
-        PlayerUIManager.instance.menuWindowIsOpen = true;
-        ToggleEquipmentButtons(true);
-        menu.SetActive(true);
+        base.OpenMenu();
+                ToggleEquipmentButtons(true);
         equipmentInventoryWindow.SetActive(false);
         ClearEquipmentInventory();
         RefreshEquipmentSlotIcons();
     }
 
-    public void CloseEquipmentManagerMenu()
-    {
-        PlayerUIManager.instance.menuWindowIsOpen = false;
-        menu.SetActive(false);
-    }
 
     public void RefreshMenu()
     {

@@ -90,12 +90,14 @@ public class EnergySiteInteractable : Interactable
 
     private void RestSiteOfGrace(PlayerManager player)
     {
-        PlayerUIManager.instance.playerUIEnergySiteManager.OpenEnergySiteManagerMenu();
+        PlayerUIManager.instance.playerUIEnergySiteManager.OpenMenu();
 
-        Debug.Log("Resting at the Energy Site");
         interactableCollider.enabled = true;
         player.playerNetworkManager.currentHealth.Value = player.playerNetworkManager.maxHealth.Value;
         player.playerNetworkManager.currentStamina.Value = player.playerNetworkManager.maxStamina.Value;
+        player.playerNetworkManager.currentFocusPoints.Value = player.playerNetworkManager.maxFocusPoints.Value;
+        player.playerNetworkManager.remainingHealthFlasks.Value = player.playerNetworkManager.remainingHealthFlasks.Value;
+        player.playerNetworkManager.remainingFocusPointFlasks.Value = player.playerNetworkManager.remainingFocusPointFlasks.Value;
 
         WorldAIManager.instance.ResetAllCharacters();
         WorldSaveGameManager.instance.SaveGame();

@@ -631,9 +631,9 @@ public class PlayerInputManager : MonoBehaviour
         {
             openCharacterMenuInput = false;
 
-            PlayerUIManager.instance.playerUICharacterMenuManager.CloseCharacterMenu();
+            PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopUpWindows();
             PlayerUIManager.instance.CloseAllMenuWindows();
-            PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
+            PlayerUIManager.instance.playerUICharacterMenuManager.OpenMenu();
         }
     }
 
@@ -645,7 +645,7 @@ public class PlayerInputManager : MonoBehaviour
 
             if (PlayerUIManager.instance.menuWindowIsOpen)
             {
-                PlayerUIManager.instance.playerUICharacterMenuManager.CloseCharacterMenu();
+                PlayerUIManager.instance.playerUICharacterMenuManager.CloseMenu();
             }
         }
     }

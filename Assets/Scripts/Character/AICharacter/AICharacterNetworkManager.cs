@@ -17,6 +17,10 @@ public class AICharacterNetworkManager : CharacterNetworkManager
     {
         base.OnIsDeadChanged(oldStatus, newStatus);
 
-        aiCharacter.aiCharacterInventoryManager.DropItem();
+        if (aiCharacter.isDead.Value)
+        {
+            aiCharacter.aiCharacterInventoryManager.DropItem();
+            aiCharacter.aiCharacterCombatManager.AwardShadesOnDeath(PlayerUIManager.instance.localPlayer);
+        }
     }
 }

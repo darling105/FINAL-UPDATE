@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using Unity.Netcode;
 
 public class AICharacterCombatManager : CharacterCombatManager
 {
@@ -50,6 +51,20 @@ public class AICharacterCombatManager : CharacterCombatManager
         HandleStanceBreak();
     }
 
+    public void AwardShadesOnDeath(PlayerManager player)
+    {
+        if (player.characterGroup == CharacterGroup.Team02)
+            return;
+
+        // if(NetworkManager.Singleton.IsHost)
+        // {
+
+        // }
+
+        player.playerStatsManager.AddShades(aiCharacter.characterStatsManager.shadesDropOnDeath);
+
+    }
+
     private void HandleStanceBreak()
     {
         if (!aiCharacter.IsOwner)
@@ -65,7 +80,7 @@ public class AICharacterCombatManager : CharacterCombatManager
         else
         {
             stanceRegenerationTimer = 0;
-            
+
             if (currentStance < maxStance)
             {
                 stanceTickTimer += Time.deltaTime;

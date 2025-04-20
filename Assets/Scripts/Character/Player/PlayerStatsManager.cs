@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerStatsManager : CharacterStatsManager
 {
     public PlayerManager player;
+
+    [Header("Shades")]
+    public int shades = 0;
+
     protected override void Awake()
     {
         base.Awake();
@@ -99,4 +103,11 @@ public class PlayerStatsManager : CharacterStatsManager
             basePoiseDefense += player.playerInventoryManager.handEquipment.poise;
         }
     }
+
+    public void AddShades(int shadesToAdd)
+    {
+        shades += shadesToAdd;
+        PlayerUIManager.instance.playerUIHudManager.SetShadesCount(shadesToAdd);
+    }
+
 }
