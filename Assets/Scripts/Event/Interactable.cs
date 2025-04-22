@@ -28,6 +28,7 @@ public class Interactable : NetworkBehaviour
         interactableCollider.enabled = false;
         player.playerInteractionManager.RemoveInteractionFromList(this);
         PlayerUIManager.instance.playerUIPopUpManager.CloseAllPopUpWindows();
+        WorldSaveGameManager.instance.SaveGame();
     }
 
     public virtual void OnTriggerEnter(Collider other)

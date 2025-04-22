@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerUILevelUpManager : PlayerUIMenu
 {
     [Header("Levels")]
-    [SerializeField] int[] playerLevels = new int[100];
+    [SerializeField] int[] playerLevels = new int[693];
     [SerializeField] int baseLevelCost = 83;
     [SerializeField] int totalLevelUpCost = 0;
 
@@ -156,6 +156,8 @@ public class PlayerUILevelUpManager : PlayerUIMenu
         {
             confirmButton.interactable = true;
         }
+
+        ChangeTextColorsDependingOnCosts();
     }
 
     public void ConfirmLevels()
@@ -173,6 +175,9 @@ public class PlayerUILevelUpManager : PlayerUIMenu
         player.playerNetworkManager.faith.Value = Mathf.RoundToInt(faithLevelSlider.value);
 
         SetCurrentStats();
+        ChangeTextColorsDependingOnCosts();
+
+        WorldSaveGameManager.instance.SaveGame();
     }
 
     public void SetAllLevelsCost()
@@ -191,8 +196,12 @@ public class PlayerUILevelUpManager : PlayerUIMenu
         int totalCost = 0;
         for (int i = 0; i < projectedLevel; i++)
         {
-            if (i <= 0)
+            if (i < currentLevel)
                 continue;
+
+            if (i > playerLevels.Length)
+                continue;
+
             totalCost += playerLevels[i];
         }
 
@@ -210,4 +219,86 @@ public class PlayerUILevelUpManager : PlayerUIMenu
         }
 
     }
+
+    private void ChangeTextColorsDependingOnCosts()
+    {
+        PlayerManager player = PlayerUIManager.instance.localPlayer;
+
+        int projectedVitalityLevel = Mathf.RoundToInt(vitalityLevelSlider.value);
+        int projectedMindLevel = Mathf.RoundToInt(mindLevelSlider.value);
+        int projectedEnduranceLevel = Mathf.RoundToInt(enduranceLevelSlider.value);
+        int projectedStrengthLevel = Mathf.RoundToInt(strengthLevelSlider.value);
+        int projectedDexterityLevel = Mathf.RoundToInt(dexterityLevelSlider.value);
+        int projectedIntelligenceLevel = Mathf.RoundToInt(intelligenceLevelSlider.value);
+        int projectedFaithLevel = Mathf.RoundToInt(faithLevelSlider.value);
+
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedVitalityLevelText, player.playerNetworkManager.vitality.Value, projectedVitalityLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedMindLevelText, player.playerNetworkManager.mind.Value, projectedMindLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedEnduranceLevelText, player.playerNetworkManager.endurance.Value, projectedEnduranceLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedStrengthLevelText, player.playerNetworkManager.strength.Value, projectedStrengthLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedDexterityLevelText, player.playerNetworkManager.dexterity.Value, projectedDexterityLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedIntelligenceLevelText, player.playerNetworkManager.intelligence.Value, projectedIntelligenceLevel);
+        ChangeTextFieldToSpecificColorBasedOnStats(player, projectedFaithLevelText, player.playerNetworkManager.faith.Value, projectedFaithLevel);
+
+        int projectedPlayerLevel = player.characterStatsManager.CalculateCharacterLevelBasedOnStats(true);
+        int playerLevel = player.characterStatsManager.CalculateCharacterLevelBasedOnStats();
+
+        if (projectedPlayerLevel == playerLevel)
+        {
+            projectedShadesHeldText.color = Color.white;
+            projectedCharacterLevelText.color = Color.white;
+            shadesNeededText.color = Color.white;
+        }
+
+        if (totalLevelUpCost <= player.playerStatsManager.shades)
+        {
+            shadesNeededText.color = Color.white;
+
+            if (projectedPlayerLevel > playerLevel)
+            {
+                projectedShadesHeldText.color = Color.red;
+                projectedCharacterLevelText.color = Color.blue;
+            }
+
+        }
+        else
+        {
+            shadesNeededText.color = Color.red;
+            if (projectedPlayerLevel > playerLevel)
+                projectedCharacterLevelText.color = Color.red;
+        }
+
+    }
+
+    private void ChangeTextFieldToSpecificColorBasedOnStats(PlayerManager player, TextMeshProUGUI textField, int stat, int projectedStat)
+    {
+
+        if (projectedStat == stat)
+            textField.color = Color.white;
+
+
+        if (totalLevelUpCost <= player.playerStatsManager.shades)
+        {
+            if (projectedStat > stat)
+            {
+                textField.color = Color.blue;
+            }
+            else
+            {
+                textField.color = Color.white;
+            }
+        }
+        else
+        {
+            if (projectedStat > stat)
+            {
+                textField.color = Color.red;
+            }
+            else
+            {
+                textField.color = Color.white;
+            }
+        }
+    }
+
 }

@@ -126,6 +126,11 @@ public class CharacterManager : NetworkBehaviour
         yield return new WaitForSeconds(5);
     }
 
+    public virtual void ReviveCharacter()
+    {
+        
+    }
+
     protected virtual void IgnoreMyOwnColliders()
     {
         Collider characterControllerCollider = GetComponent<Collider>();

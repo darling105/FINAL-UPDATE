@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Attack 02
   m_EditorClassIdentifier: 
   attackAnimation: Attack_02
+  isParryable: 1
   comboAction: {fileID: 0}
   attackWeight: 50
-  attackType: 1
+  attackType: 0
   actionRecoveryTime: 1.5
   minimumAttackAngle: -35
   maximumAttackAngle: 35

@@ -23,6 +23,7 @@ public class AICharacterSpawner : MonoBehaviour
 
     public void AttemptToSpawnCharacter()
     {
+        Debug.Log("Attempting to spawn character at: " + transform.position);
         if (characterGameObject != null)
         {
             instantiatedGameObject = Instantiate(characterGameObject);
@@ -43,7 +44,7 @@ public class AICharacterSpawner : MonoBehaviour
 
         if (aiCharacter == null)
             return;
-            
+
         instantiatedGameObject.transform.position = transform.position;
         instantiatedGameObject.transform.rotation = transform.rotation;
         aiCharacter.aiCharacterNetworkManager.currentHealth.Value = aiCharacter.aiCharacterNetworkManager.maxHealth.Value;

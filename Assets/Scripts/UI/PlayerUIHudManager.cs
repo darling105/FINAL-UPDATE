@@ -75,16 +75,26 @@ public class PlayerUIHudManager : MonoBehaviour
     {
         float timer = shadeUpdateCountDelayTimer;
         int shadesToAdd = pendingShadesToAdd;
-        shadesToAddText.text = "+ " + shadesToAdd.ToString();
+
+        if (shadesToAdd >= 0)
+        {
+            shadesToAddText.text = "+ " + shadesToAdd.ToString();
+
+        }
+        else
+        {
+            shadesToAddText.text = "- " + Mathf.Abs(shadesToAdd).ToString();
+        }
+
         shadesCountText.enabled = true;
         while (timer > 0)
         {
             timer -= Time.deltaTime;
 
-            if(shadesToAdd != pendingShadesToAdd)
+            if (shadesToAdd != pendingShadesToAdd)
             {
                 shadesToAdd = pendingShadesToAdd;
-                shadesToAddText.text = "+ " +shadesToAdd.ToString();
+                shadesToAddText.text = "+ " + shadesToAdd.ToString();
             }
             yield return null;
         }

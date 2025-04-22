@@ -55,7 +55,6 @@ public class PlayerUIManager : MonoBehaviour
         {
             startGameAsClient = false;
             NetworkManager.Singleton.Shutdown();
-
             NetworkManager.Singleton.StartClient();
         }
     }

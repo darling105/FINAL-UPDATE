@@ -36,7 +36,7 @@ public class EnergySiteInteractable : Interactable
                 isActivated.Value = false;
             }
         }
-        
+
         if (isActivated.Value)
         {
             activatedParticles.SetActive(true);
@@ -47,7 +47,7 @@ public class EnergySiteInteractable : Interactable
             activatedParticles.SetActive(false);
             interactableText = unactivatedInteractionText;
         }
-        
+
     }
 
     public override void OnNetworkSpawn()
@@ -96,8 +96,8 @@ public class EnergySiteInteractable : Interactable
         player.playerNetworkManager.currentHealth.Value = player.playerNetworkManager.maxHealth.Value;
         player.playerNetworkManager.currentStamina.Value = player.playerNetworkManager.maxStamina.Value;
         player.playerNetworkManager.currentFocusPoints.Value = player.playerNetworkManager.maxFocusPoints.Value;
-        player.playerNetworkManager.remainingHealthFlasks.Value = player.playerNetworkManager.remainingHealthFlasks.Value;
-        player.playerNetworkManager.remainingFocusPointFlasks.Value = player.playerNetworkManager.remainingFocusPointFlasks.Value;
+        player.playerNetworkManager.remainingHealthFlasks.Value = 3;
+        player.playerNetworkManager.remainingFocusPointFlasks.Value = 3;
 
         WorldAIManager.instance.ResetAllCharacters();
         WorldSaveGameManager.instance.SaveGame();
@@ -122,10 +122,17 @@ public class EnergySiteInteractable : Interactable
             interactableText = unactivatedInteractionText;
         }
     }
-   
+
     public override void Interact(PlayerManager player)
     {
         base.Interact(player);
+
+        if (player.isPerformingAction)
+            return;
+        if (player.playerCombatManager.isUsingItem)
+            return;
+
+        WorldSaveGameManager.instance.currentCharacterData.lastEnergySiteRestedAt = energySiteID;
 
         if (!isActivated.Value)
         {

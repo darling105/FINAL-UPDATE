@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombatManager : CharacterCombatManager
 {
@@ -20,6 +21,32 @@ public class PlayerCombatManager : CharacterCombatManager
         player = GetComponent<PlayerManager>();
     }
 
+    private void Start()
+    {
+        SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene arg0, Scene arg1)
+    {
+        if (WorldSaveGameManager.instance.currentCharacterData.hasDeadSpot)
+        {
+            Vector3 deadSpotPosition = new Vector3(
+            WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionX,
+            WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionY,
+            WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionZ);
+
+            CreateDeadSpot(deadSpotPosition, WorldSaveGameManager.instance.currentCharacterData.deadSpotShadeCount, false);
+        }
+
+    }
+
     public void PerformWeaponBasedAction(WeaponItemAction weaponAction, WeaponItem weaponPerformingAction)
     {
 
@@ -30,6 +57,29 @@ public class PlayerCombatManager : CharacterCombatManager
             player.playerNetworkManager.NotifyTheServerOfWeaponActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, weaponAction.actionID, weaponPerformingAction.itemID);
         }
 
+    }
+
+    public void CreateDeadSpot(Vector3 position, int shadesCount, bool removePlayerShades = true)
+    {
+        if (!player.IsHost)
+            return;
+
+        GameObject deadSpot = Instantiate(WorldCharacterEffectsManager.instance.deadSpotVFX);
+        deadSpot.GetComponent<NetworkObject>().Spawn();
+
+        deadSpot.transform.position = position;
+
+        PickUpShadesInteractable pickUpShades = deadSpot.GetComponent<PickUpShadesInteractable>();
+        pickUpShades.shadesCount = shadesCount;
+
+        if (removePlayerShades)
+            player.playerStatsManager.AddShades(-player.playerStatsManager.shades);
+
+        WorldSaveGameManager.instance.currentCharacterData.hasDeadSpot = true;
+        WorldSaveGameManager.instance.currentCharacterData.deadSpotShadeCount = pickUpShades.shadesCount;
+        WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionX = position.x;
+        WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionY = position.y;
+        WorldSaveGameManager.instance.currentCharacterData.deadSpotPositionZ = position.z;
     }
 
     public override void CloseAllDamagaCollider()

@@ -74,7 +74,7 @@ public class PlayerUIEquipmentManager : PlayerUIMenu
     public override void OpenMenu()
     {
         base.OpenMenu();
-                ToggleEquipmentButtons(true);
+        ToggleEquipmentButtons(true);
         equipmentInventoryWindow.SetActive(false);
         ClearEquipmentInventory();
         RefreshEquipmentSlotIcons();
@@ -167,7 +167,6 @@ public class PlayerUIEquipmentManager : PlayerUIMenu
         equipmentInventoryWindow.SetActive(false);
 
     }
-
 
     private void RefreshEquipmentSlotIcons()
     {

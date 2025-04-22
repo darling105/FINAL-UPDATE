@@ -25,6 +25,7 @@ public class WorldCharacterEffectsManager : MonoBehaviour
     public GameObject bloodSplatterVFX;
     public GameObject criticalBloodSplatterVFX;
     public GameObject healingFlaskVFX;
+    public GameObject deadSpotVFX;
 
     private void Awake()
     {

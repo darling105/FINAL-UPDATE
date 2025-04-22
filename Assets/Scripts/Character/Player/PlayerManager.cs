@@ -212,10 +212,29 @@ public class PlayerManager : CharacterManager
         {
             PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUP();
         }
-
-
         WorldSoundFXManager.instance.StopBossMusic();
+
+        WorldGameSessionManager.instance.WaitThenRevivePlayer();
+
         return base.ProcessDeathEvent(manuallySelectDeathAnimation);
+    }
+
+    public override void ReviveCharacter()
+    {
+        base.ReviveCharacter();
+
+        if (IsOwner)
+        {
+            isDead.Value = false;
+
+            playerNetworkManager.currentHealth.Value = playerNetworkManager.maxHealth.Value;
+            playerNetworkManager.currentStamina.Value = playerNetworkManager.maxStamina.Value;
+            playerNetworkManager.currentFocusPoints.Value = playerNetworkManager.maxFocusPoints.Value;
+            playerNetworkManager.remainingHealthFlasks.Value = 3;
+            playerNetworkManager.remainingFocusPointFlasks.Value = 3;
+
+            playerAnimatorManager.PlayTargetActionAnimation("Empty", true);
+        }
     }
 
     public void OnCurrentWeaponBeingUsedIDChange(int newID)
@@ -244,6 +263,10 @@ public class PlayerManager : CharacterManager
         currentCharacterData.vitality = playerNetworkManager.vitality.Value;
         currentCharacterData.endurance = playerNetworkManager.endurance.Value;
         currentCharacterData.mind = playerNetworkManager.mind.Value;
+        currentCharacterData.strength = playerNetworkManager.strength.Value;
+        currentCharacterData.dexterity = playerNetworkManager.dexterity.Value;
+        currentCharacterData.intelligence = playerNetworkManager.intelligence.Value;
+        currentCharacterData.faith = playerNetworkManager.faith.Value;
 
         currentCharacterData.hairStyleID = playerNetworkManager.hairStyleID.Value;
         currentCharacterData.hairColorRed = playerNetworkManager.hairColorRed.Value;
@@ -256,6 +279,7 @@ public class PlayerManager : CharacterManager
         currentCharacterData.currentHealth = playerNetworkManager.currentHealth.Value;
         currentCharacterData.currentStamina = playerNetworkManager.currentStamina.Value;
         currentCharacterData.currentFocusPoints = playerNetworkManager.currentFocusPoints.Value;
+        currentCharacterData.shades = playerStatsManager.shades;
 
         //equipment
         currentCharacterData.headEquipment = playerNetworkManager.headEquipmentID.Value;
@@ -327,6 +351,14 @@ public class PlayerManager : CharacterManager
         playerNetworkManager.vitality.Value = currentCharacterData.vitality;
         playerNetworkManager.endurance.Value = currentCharacterData.endurance;
         playerNetworkManager.mind.Value = currentCharacterData.mind;
+        playerNetworkManager.strength.Value = currentCharacterData.strength;
+        playerNetworkManager.dexterity.Value = currentCharacterData.dexterity;
+        playerNetworkManager.intelligence.Value = currentCharacterData.intelligence;
+        playerNetworkManager.faith.Value = currentCharacterData.faith;
+
+        // playerStatsManager.shades = currentCharacterData.shades;
+        // PlayerUIManager.instance.playerUIHudManager.SetShadesCount(currentCharacterData.shades);
+        playerStatsManager.AddShades(currentCharacterData.shades);
 
         playerNetworkManager.maxHealth.Value = playerStatsManager.CalculateHealhtBasedOnVitalityLevel(currentCharacterData.vitality);
         playerNetworkManager.maxStamina.Value = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(currentCharacterData.endurance);

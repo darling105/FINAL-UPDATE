@@ -33922,12 +33922,12 @@ GameObject:
   - component: {fileID: -829626362549126917}
   - component: {fileID: -4094514243663188144}
   - component: {fileID: 4884456356378632206}
+  - component: {fileID: 6238346322847256607}
   - component: {fileID: 2894377159291481236}
+  - component: {fileID: 7660063708504796753}
   - component: {fileID: 7479838408852637273}
   - component: {fileID: 8793700466606201139}
-  - component: {fileID: 6238346322847256607}
   - component: {fileID: 4909596478471726}
-  - component: {fileID: 7660063708504796753}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -34167,6 +34167,12 @@ MonoBehaviour:
     m_InternalValue: 0
   hairStyleID:
     m_InternalValue: 0
+  hairColorRed:
+    m_InternalValue: 0
+  hairColorGreen:
+    m_InternalValue: 0
+  hairColorBlue:
+    m_InternalValue: 0
   currentWeaponBeingUsed:
     m_InternalValue: 0
   currentRightHandWeaponID:
@@ -34281,6 +34287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f29d137fbfadf44a08480dc2581004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadesDropOnDeath: 50
   staminaRegenerationAmount: 45
   staminaRegenerationDelay: 2
   blockingPhysicalAbsorption: 0
@@ -34304,6 +34311,7 @@ MonoBehaviour:
   defaultPoiseResetTime: 8
   poiseResetTimer: 0
   player: {fileID: 0}
+  shades: 0
 --- !u!114 &573910122159627691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34497,6 +34505,18 @@ MonoBehaviour:
   currentWeaponBeingUsed: {fileID: 0}
   canComboWithMainHandWeapon: 0
   isUsingItem: 0
+--- !u!114 &6238346322847256607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431817535928883974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2ec976c3750f4459df079bad192361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2894377159291481236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34548,6 +34568,45 @@ MonoBehaviour:
   - {fileID: 3173679915462142587}
   - {fileID: 4943396856904400082}
   femaleEyebrows: {fileID: 7603869289595658684}
+--- !u!114 &7660063708504796753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431817535928883974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0f55288a101db4baedfa062d5375c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: -40
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckSphereRadius: 0.2
+  yVelocity: {x: 0, y: 0, z: 0}
+  groundedYVelocity: -20
+  fallStartYVelocity: -5
+  isRolling: 0
+  canRotate: 1
+  canMove: 1
+  canRun: 1
+  canRoll: 1
+  isGrounded: 1
+  verticalMovement: 0
+  horizontalMovement: 0
+  moveAmount: 0
+  walkingSpeed: 1
+  runningSpeed: 3
+  sprintingSpeed: 6
+  rotationSpeed: 15
+  sprintingStaminaCost: 2
+  jumpStaminaCost: 25
+  jumpHeight: 0.25
+  jumpForwardSpeed: 1.5
+  freeFallSpeed: 2
+  dodgeStaminaCost: 25
 --- !u!82 &7479838408852637273
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34672,18 +34731,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6238346322847256607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4431817535928883974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2ec976c3750f4459df079bad192361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &4909596478471726
 CharacterController:
   m_ObjectHideFlags: 0
@@ -34709,45 +34756,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.88, z: 0}
---- !u!114 &7660063708504796753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4431817535928883974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0f55288a101db4baedfa062d5375c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityForce: -40
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  groundCheckSphereRadius: 0.2
-  yVelocity: {x: 0, y: 0, z: 0}
-  groundedYVelocity: -20
-  fallStartYVelocity: -5
-  isRolling: 0
-  canRotate: 1
-  canMove: 1
-  canRun: 1
-  canRoll: 1
-  isGrounded: 1
-  verticalMovement: 0
-  horizontalMovement: 0
-  moveAmount: 0
-  walkingSpeed: 1
-  runningSpeed: 3
-  sprintingSpeed: 6
-  rotationSpeed: 15
-  sprintingStaminaCost: 2
-  jumpStaminaCost: 25
-  jumpHeight: 0.25
-  jumpForwardSpeed: 1.5
-  freeFallSpeed: 2
-  dodgeStaminaCost: 25
 --- !u!1 &4432310244525761277
 GameObject:
   m_ObjectHideFlags: 0

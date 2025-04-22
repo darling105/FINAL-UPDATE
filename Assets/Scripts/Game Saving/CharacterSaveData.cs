@@ -11,6 +11,13 @@ public class CharacterSaveData
     [Header("Character Name")]
     public string characterName = "Character";
 
+    [Header("Dead Spot")]
+    public bool hasDeadSpot = false;
+    public float deadSpotPositionX;
+    public float deadSpotPositionY;
+    public float deadSpotPositionZ;
+    public int deadSpotShadeCount;
+
     [Header("Body Type")]
     public bool isMale = true;
     public int hairStyleID;
@@ -30,13 +37,19 @@ public class CharacterSaveData
     public int currentHealth;
     public float currentStamina;
     public int currentFocusPoints;
+    public int shades;
 
     [Header("Stats")]
     public int vitality;
     public int endurance;
     public int mind;
+    public int strength;
+    public int dexterity;
+    public int intelligence;
+    public int faith;
 
     [Header("Energy Site")]
+    public int lastEnergySiteRestedAt = 0;
     public SerializableDictionary<int, bool> energySites;
 
     [Header("Bosses")]

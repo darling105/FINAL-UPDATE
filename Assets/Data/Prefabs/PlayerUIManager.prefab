@@ -19760,7 +19760,7 @@ MonoBehaviour:
   baseLevelCost: 83
   totalLevelUpCost: 0
   characterLevelText: {fileID: 3902635467702766591}
-  shadesHeldText: {fileID: 8942387715032513810}
+  shadesHeldText: {fileID: 8094827183581842015}
   shadesNeededText: {fileID: 7017986692563717300}
   vitalityLevelText: {fileID: 6153409152992038105}
   mindLevelText: {fileID: 5817923858676227443}

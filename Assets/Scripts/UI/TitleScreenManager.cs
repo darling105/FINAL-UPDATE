@@ -91,11 +91,18 @@ public class TitleScreenManager : MonoBehaviour
             DisplayNoFreeCharacterSlotsPopUp();
         }
     }
+   
     public void StartNewGame()
     {
         WorldSaveGameManager.instance.AttempToCreateNewGame();
     }
 
+    public void ExitGame()
+    {
+      NetworkManager.Singleton.Shutdown(); // Dừng host/client/server nếu đang chạy
+
+      Application.Quit(); // Thoát ứng dụng
+    }
 
     public void OpenLoadGameMenu()
     {
@@ -153,7 +160,7 @@ public class TitleScreenManager : MonoBehaviour
     public void CloseCharacterCreationMenu()
     {
         titleScreenCharacterCreationMenu.SetActive(false);
-        
+
         OpenTitleScreenMainMenu();
     }
 

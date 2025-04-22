@@ -2188,9 +2188,9 @@ MonoBehaviour:
   isParryable:
     m_InternalValue: 0
   currentHealth:
-    m_InternalValue: 1000
+    m_InternalValue: 3000
   maxHealth:
-    m_InternalValue: 1000
+    m_InternalValue: 3000
   currentStamina:
     m_InternalValue: 0
   maxStamina:
@@ -2337,7 +2337,7 @@ MonoBehaviour:
   stanceRegenerationTimer: 0
   defaultTimeUntilStanceRegenerationBegins: 15
   clubDamageCollider: {fileID: 430079375334452389}
-  baseDamage: 50
+  baseDamage: 125
   basePoiseDamage: 50
   attack01DamageModifier: 1
   attack02DamageModifier: 1.2

@@ -9,6 +9,8 @@ public class WorldGameSessionManager : MonoBehaviour
     [Header("Active Player In Session")]
     public List<PlayerManager> players = new List<PlayerManager>();
 
+    private Coroutine reviveCoroutine;
+
     private void Awake()
     {
         if (instance == null)
@@ -18,6 +20,32 @@ public class WorldGameSessionManager : MonoBehaviour
         else
         {
             Destroy(this);
+        }
+    }
+
+    public void WaitThenRevivePlayer()
+    {
+        if (reviveCoroutine != null)
+            StopCoroutine(reviveCoroutine);
+
+        reviveCoroutine = StartCoroutine(RevivePlayerCoroutine(4));
+    }
+
+    private IEnumerator RevivePlayerCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        PlayerUIManager.instance.playerUILoadingScreenManager.ActivateLoadingScreen();
+
+        PlayerUIManager.instance.localPlayer.ReviveCharacter();
+
+        for (int i = 0; i < WorldObjectManager.instance.energySites.Count; i++)
+        {
+            if (WorldObjectManager.instance.energySites[i].energySiteID == WorldSaveGameManager.instance.currentCharacterData.lastEnergySiteRestedAt)
+            {
+                WorldObjectManager.instance.energySites[i].TeleportToEnergySite();
+                break;
+            }
         }
     }
 

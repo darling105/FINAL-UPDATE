@@ -101,14 +101,14 @@ public class CharacterStatsManager : MonoBehaviour
             Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.intelligenceLevelSlider.value) +
             Mathf.RoundToInt(PlayerUIManager.instance.playerUILevelUpManager.faithLevelSlider.value);
 
-            int projecctedCharacterLevel = totalProjectedAttributes - 70 + 1;
+            int projectedCharacterLevel = totalProjectedAttributes - 70 + 1;
 
-            if (projecctedCharacterLevel < 1)
+            if (projectedCharacterLevel < 1)
             {
-                projecctedCharacterLevel = 1;
+                projectedCharacterLevel = 1;
             }
 
-            return projecctedCharacterLevel;
+            return projectedCharacterLevel;
         }
 
         int totalAttributes = character.characterNetworkManager.vitality.Value +

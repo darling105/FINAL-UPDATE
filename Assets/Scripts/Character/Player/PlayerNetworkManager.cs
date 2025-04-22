@@ -9,9 +9,6 @@ public class PlayerNetworkManager : CharacterNetworkManager
     PlayerManager player;
     public NetworkVariable<FixedString64Bytes> characterName = new NetworkVariable<FixedString64Bytes>("Darling", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-
-
-
     [Header("Flasks")]
     public NetworkVariable<int> remainingHealthFlasks = new NetworkVariable<int>(3, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     public NetworkVariable<int> remainingFocusPointFlasks = new NetworkVariable<int>(3, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -50,6 +47,16 @@ public class PlayerNetworkManager : CharacterNetworkManager
     {
         base.Awake();
         player = GetComponent<PlayerManager>();
+    }
+
+    public override void OnIsDeadChanged(bool oldStatus, bool newStatus)
+    {
+        base.OnIsDeadChanged(oldStatus, newStatus);
+
+        if (player.isDead.Value)
+        {
+            player.playerCombatManager.CreateDeadSpot(player.transform.position, player.playerStatsManager.shades);
+        }
     }
 
     public void SetCharacterActionHand(bool rightHandedAction)
